@@ -1,20 +1,16 @@
 // server.js
 const express = require('express');
+const dotenv = require('dotenv');
+const connectDB = require('./config/db');
+const userRoutes = require('./routes/userRoutes');
+
+dotenv.config();
+connectDB();
+
 const app = express();
-const PORT = process.env.PORT || 3000;
+app.use(express.json()); // Parse JSON
 
-// Middleware
-app.use(express.json());
+app.use('/api/users', userRoutes);
 
-// Routes
-const apiRoutes = require('./routes/api');
-app.use('/api', apiRoutes);
-
-// Root route
-app.get('/', (req, res) => {
-  res.send('Welcome to the Node Express Backend!');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
