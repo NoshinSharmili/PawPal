@@ -2,19 +2,25 @@ const mongoose = require('mongoose');
 
 const petSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  type: String,
+  type: { type: String, required: true }, // dog, cat, bird, etc.
   breed: String,
-  dob: Date,
-  healthStatus: String,
-  vaccinationStatus: Boolean,
-  feedingStatus: String,
-  adoptionStatus: String,
-  needVaccination: Boolean,
-  transferredFood: Boolean,
-  ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Owner' },
-  shelterProviderId: { type: mongoose.Schema.Types.ObjectId, ref: 'ShelterProvider' },
-  rescuerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Rescuer' },
-  vetId: { type: mongoose.Schema.Types.ObjectId, ref: 'Vet' }
-});
+  age: Number,
+  gender: { type: String, enum: ['male', 'female'] },
+  size: { type: String, enum: ['small', 'medium', 'large'] },
+  color: String,
+  description: String,
+  images: [String],
+  
 
-module.exports = mongoose.model('Pet', petSchema);
+  healthStatus: { type: String, default: 'healthy' },
+  vaccinationStatus: { type: Boolean, default: false },
+  lastVaccinationDate: Date,
+  nextVaccinationDate: Date,
+  medicalNotes: String,
+ feedingSchedule: [{
+    time: String,
+    food: String,
+    amount: String
+  }],
+  careNotes: String,
+  activityLevel: { type: String, enum: ['low', 'medium', 'high'] },
