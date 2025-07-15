@@ -1,9 +1,14 @@
-// routes/userRoutes.js
-const express = require('express');
+import express from 'express';
+import { getUser } from '../controllers/userController.js';
+import { getAllPets, createPet } from '../controllers/petController.js';
+
 const router = express.Router();
-const { getUsers, createUser } = require('../controllers/userController');
 
-router.get('/', getUsers);
-router.post('/', createUser);
+/* User */
+router.get('/user/:id', getUser);
 
-module.exports = router;
+/* Pets */
+router.get('/pets', getAllPets);
+router.post('/pets', createPet);
+
+export default router;
