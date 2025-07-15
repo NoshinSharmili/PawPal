@@ -1,16 +1,12 @@
-// controllers/userController.js
-const User = require('../models/User');
+import User from '../models/User.js';
 
-const getUsers = async (req, res) => {
-  const users = await User.find();
-  res.json(users);
+// GET /api/user/:id
+export const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
-
-const createUser = async (req, res) => {
-  const { name, email } = req.body;
-  const user = new User({ name, email });
-  await user.save();
-  res.status(201).json(user);
-};
-
-module.exports = { getUsers, createUser };
