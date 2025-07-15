@@ -24,3 +24,20 @@ const petSchema = new mongoose.Schema({
   }],
   careNotes: String,
   activityLevel: { type: String, enum: ['low', 'medium', 'high'] },
+
+  adoptionStatus: { 
+    type: String, 
+    enum: ['available', 'pending', 'adopted'], 
+    default: 'available' 
+  },
+  isForAdoption: { type: Boolean, default: false },
+
+ ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  shelterProviderId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  
+  createdAt: { type: Date, default: Date.now },
+  updatedAt: { type: Date, default: Date.now }
+});
+
+module.exports = mongoose.model('Pet', petSchema);
+
