@@ -11,10 +11,11 @@ const petSchema = new mongoose.Schema({
   adoptionStatus: String,
   needVaccination: Boolean,
   transferredFood: Boolean,
-  ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Owner' },
-  shelterProviderId: { type: mongoose.Schema.Types.ObjectId, ref: 'ShelterProvider' },
-  rescuerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Rescuer' },
-  vetId: { type: mongoose.Schema.Types.ObjectId, ref: 'Vet' }
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  // ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Owner' },
+  // shelterProviderId: { type: mongoose.Schema.Types.ObjectId, ref: 'ShelterProvider' },
+  // rescuerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Rescuer' },
+  // vetId: { type: mongoose.Schema.Types.ObjectId, ref: 'Vet' }
 });
 
 module.exports = mongoose.model('Pet', petSchema);
