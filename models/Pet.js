@@ -11,7 +11,8 @@ const petSchema = new mongoose.Schema({
   adoptionStatus: String,
   needVaccination: Boolean,
   transferredFood: Boolean,
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  image: { type: String } // S3 image URL or key
   // ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Owner' },
   // shelterProviderId: { type: mongoose.Schema.Types.ObjectId, ref: 'ShelterProvider' },
   // rescuerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Rescuer' },
