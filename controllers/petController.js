@@ -42,6 +42,7 @@ const createPet = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+
 const getPetsByUser = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -74,4 +75,20 @@ const getPetById = async (req, res) => {
   }
 };
 
-module.exports = { createPet, getPetsByUser, getAllPets, getPetById };
+// NEW: Delete pet function
+const deletePet = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const pet = await Pet.findByIdAndDelete(id);
+    
+    if (!pet) {
+      return res.status(404).json({ error: 'Pet not found' });
+    }
+    
+    res.json({ message: 'Pet deleted successfully', pet });
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { createPet, getPetsByUser, getAllPets, getPetById, deletePet };
