@@ -1,4 +1,5 @@
 const Pet = require('../models/Pet');
+<<<<<<< HEAD
 const AWS = require('aws-sdk');
 
 const dotenv = require('dotenv');
@@ -23,6 +24,8 @@ console.log('S3 CONFIG:', {
   region: process.env.AWS_REGION,
   bucket: process.env.AWS_S3_BUCKET
 });
+=======
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
 
 const createPet = async (req, res) => {
   try {
@@ -37,8 +40,12 @@ const createPet = async (req, res) => {
       adoptionStatus,
       needVaccination,
       transferredFood,
+<<<<<<< HEAD
       userId,
       image // Add image field
+=======
+      userId
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
       // shelterProviderId,
       // rescuerId,
       // vetId
@@ -55,8 +62,12 @@ const createPet = async (req, res) => {
       adoptionStatus,
       needVaccination,
       transferredFood,
+<<<<<<< HEAD
       userId,
       image // Save image field
+=======
+      userId
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
       // shelterProviderId,
       // rescuerId,
       // vetId
@@ -68,6 +79,10 @@ const createPet = async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 };
+<<<<<<< HEAD
+=======
+
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
 const getPetsByUser = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -100,6 +115,7 @@ const getPetById = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 const getPresignedUrl = async (req, res) => {
   try {
     const { fileName, fileType } = req.body;
@@ -123,6 +139,9 @@ const getPresignedUrl = async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 };
+=======
+// NEW: Delete pet function
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
 const deletePet = async (req, res) => {
   try {
     const { id } = req.params;
@@ -138,6 +157,7 @@ const deletePet = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 const updatePetAdoptionStatus = async (req, res) => {
   try {
     const { id } = req.params;
@@ -160,3 +180,6 @@ const updatePetAdoptionStatus = async (req, res) => {
 };
 
 module.exports = { createPet, getPetsByUser, getAllPets, getPetById, getPresignedUrl, deletePet, updatePetAdoptionStatus };
+=======
+module.exports = { createPet, getPetsByUser, getAllPets, getPetById, deletePet };
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98

@@ -1,5 +1,8 @@
 const AdoptionApplication = require('../models/AdoptionApplication');
+<<<<<<< HEAD
 const Pet = require('../models/Pet');
+=======
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
 
 const submitAdoptionApplication = async (req, res) => {
   try {
@@ -13,8 +16,12 @@ const submitAdoptionApplication = async (req, res) => {
       familyInformation,
       nidNumber,
       phoneNumber,
+<<<<<<< HEAD
       reasonToAdopt,
       status // allow status to be set optionally
+=======
+      reasonToAdopt
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
     } = req.body;
 
     const application = new AdoptionApplication({
@@ -27,8 +34,12 @@ const submitAdoptionApplication = async (req, res) => {
       familyInformation,
       nidNumber,
       phoneNumber,
+<<<<<<< HEAD
       reasonToAdopt,
       status // set status if provided, otherwise schema default
+=======
+      reasonToAdopt
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
     });
 
     await application.save();
@@ -38,6 +49,7 @@ const submitAdoptionApplication = async (req, res) => {
   }
 };
 
+<<<<<<< HEAD
 const getApplicationsForUserPets = async (req, res) => {
   try {
     const { userId } = req.params;
@@ -88,3 +100,6 @@ const updateAdoptionApplicationStatus = async (req, res) => {
 };
 
 module.exports = { submitAdoptionApplication, getApplicationsForUserPets, getAdoptionApplicationById, updateAdoptionApplicationStatus }; 
+=======
+module.exports = { submitAdoptionApplication }; 
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98

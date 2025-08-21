@@ -18,6 +18,7 @@ const petSchema = new mongoose.Schema({
   // shelterProviderId: { type: mongoose.Schema.Types.ObjectId, ref: 'ShelterProvider' },
   // rescuerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Rescuer' },
   // vetId: { type: mongoose.Schema.Types.ObjectId, ref: 'Vet' }
+<<<<<<< HEAD
 });
 
 petSchema.post('save', async function(doc, next) {
@@ -30,6 +31,8 @@ petSchema.post('save', async function(doc, next) {
   } catch (err) {
     next(err);
   }
+=======
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
 });
 
 module.exports = mongoose.model('Pet', petSchema);

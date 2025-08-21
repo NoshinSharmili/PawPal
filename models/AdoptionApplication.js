@@ -11,7 +11,10 @@ const adoptionApplicationSchema = new mongoose.Schema({
   nidNumber: { type: String, required: true },
   phoneNumber: { type: String, required: true },
   reasonToAdopt: { type: String, required: true },
+<<<<<<< HEAD
   status: { type: String, enum: ['pending', 'approved', 'rejected'], default: 'pending' },
+=======
+>>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
   submittedAt: { type: Date, default: Date.now }
 });
 
