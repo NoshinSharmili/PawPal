@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const HealthRecord = require('./HealthRecord');
 
 const petSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -8,13 +9,27 @@ const petSchema = new mongoose.Schema({
   healthStatus: String,
   vaccinationStatus: Boolean,
   feedingStatus: String,
-  adoptionStatus: String,
+  adoptionStatus: { type: String, enum: ['personal', 'up for adoption'] },
   needVaccination: Boolean,
   transferredFood: Boolean,
-  ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Owner' },
-  shelterProviderId: { type: mongoose.Schema.Types.ObjectId, ref: 'ShelterProvider' },
-  rescuerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Rescuer' },
-  vetId: { type: mongoose.Schema.Types.ObjectId, ref: 'Vet' }
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  image: { type: String } // S3 image URL or key
+  // ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Owner' },
+  // shelterProviderId: { type: mongoose.Schema.Types.ObjectId, ref: 'ShelterProvider' },
+  // rescuerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Rescuer' },
+  // vetId: { type: mongoose.Schema.Types.ObjectId, ref: 'Vet' }
+});
+
+petSchema.post('save', async function(doc, next) {
+  try {
+    // Only create if this is a new document
+    if (doc.isNew) {
+      await HealthRecord.create({ petId: doc._id });
+    }
+    next();
+  } catch (err) {
+    next(err);
+  }
 });
 
 module.exports = mongoose.model('Pet', petSchema);
