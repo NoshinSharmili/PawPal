@@ -1,0 +1,24 @@
+[33m05db38d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mfatiha2[m[33m, [m[1;31morigin/fatiha2[m[33m)[m added foster system
+[33m4f1beaa[m Add foster system
+[33m45e843c[m created schema, routes and controller for foster system
+[33me1201db[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m modified petRoutes and petController to delete pet
+[33mb54d920[m modified vetRoutes, vetController and vet schema and sevrer
+[33m3ad9b54[m seedVets added
+[33m5840690[m seedVets added
+[33m00f344c[m resolved merge conflicts
+[33m097958b[m "added vet routes, vetController and modified vet schema and server.js"
+[33md1d9dd8[m Add files via upload
+[33m940e6e5[m Add files via upload
+[33m9c47d8f[m Add files via upload
+[33m7dca162[m Add files via upload
+[33m307e6bf[m Update Pet.js
+[33m50b8144[m Update Pet.js
+[33m37ec04a[m Update User.js
+[33m1e3c809[m Update User.js
+[33m196160f[m Merge pull request #2 from NoshinSharmili/Fatiha
+[33m0210d5d[m Add files via upload
+[33mac45e78[m Merge pull request #1 from NoshinSharmili/Noshin
+[33mcaab062[m[33m ([m[1;31morigin/fatiha[m[33m, [m[1;31morigin/Noshin[m[33m)[m setup
+[33m34c3042[m Update README.md
+[33md766234[m project creation
+[33mef4919c[m first commit

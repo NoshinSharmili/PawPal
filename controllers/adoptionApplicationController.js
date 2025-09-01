@@ -1,13 +1,11 @@
 const AdoptionApplication = require('../models/AdoptionApplication');
-<<<<<<< HEAD
 const Pet = require('../models/Pet');
-=======
->>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
 
 const submitAdoptionApplication = async (req, res) => {
   try {
     const {
       petId,
+      userId,
       fullName,
       profession,
       email,
@@ -16,16 +14,13 @@ const submitAdoptionApplication = async (req, res) => {
       familyInformation,
       nidNumber,
       phoneNumber,
-<<<<<<< HEAD
       reasonToAdopt,
       status // allow status to be set optionally
-=======
-      reasonToAdopt
->>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
     } = req.body;
 
     const application = new AdoptionApplication({
       petId,
+      userId,
       fullName,
       profession,
       email,
@@ -34,12 +29,8 @@ const submitAdoptionApplication = async (req, res) => {
       familyInformation,
       nidNumber,
       phoneNumber,
-<<<<<<< HEAD
       reasonToAdopt,
       status // set status if provided, otherwise schema default
-=======
-      reasonToAdopt
->>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
     });
 
     await application.save();
@@ -49,15 +40,16 @@ const submitAdoptionApplication = async (req, res) => {
   }
 };
 
-<<<<<<< HEAD
 const getApplicationsForUserPets = async (req, res) => {
   try {
     const { userId } = req.params;
     // Find all pets owned by the user
     const pets = await Pet.find({ userId });
     const petIds = pets.map(pet => pet._id);
-    // Find all adoption applications for these pets, and populate pet details
-    const applications = await AdoptionApplication.find({ petId: { $in: petIds } }).populate('petId');
+    // Find all adoption applications for these pets, and populate pet and user details
+    const applications = await AdoptionApplication.find({ petId: { $in: petIds } })
+      .populate('petId')
+      .populate('userId');
     res.json(applications);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -99,7 +91,17 @@ const updateAdoptionApplicationStatus = async (req, res) => {
   }
 };
 
-module.exports = { submitAdoptionApplication, getApplicationsForUserPets, getAdoptionApplicationById, updateAdoptionApplicationStatus }; 
-=======
-module.exports = { submitAdoptionApplication }; 
->>>>>>> e1201dbb78164aa3549184cd08020bd0332f1f98
+// Get all adoption applications by applicant userId
+const getAdoptionApplicationsByUserId = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const applications = await AdoptionApplication.find({ userId })
+      .populate('petId')
+      .populate('userId');
+    res.json(applications);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports = { submitAdoptionApplication, getApplicationsForUserPets, getAdoptionApplicationById, updateAdoptionApplicationStatus, getAdoptionApplicationsByUserId }; 
