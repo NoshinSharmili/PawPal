@@ -2,8 +2,6 @@
 
 **PawPal** is a cross-platform mobile application that centralizes pet adoption, health tracking, and daily care into a single, unified platform — built for pet owners, adopters, shelters, veterinarians, and rescuers/fosters.
 
-Developed as part of **SWE 4404: Software Project Lab II** at the Islamic University of Technology (IUT), Department of Computer Science and Engineering.
-
 ---
 
 ## About
