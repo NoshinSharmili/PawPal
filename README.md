@@ -40,14 +40,6 @@ The project was informed by user research with 20 interviewees — including pet
 - **Veterinarians** — access and update medical records
 - **Rescuers/Fosters** — list pets for adoption and offer temporary care
 
-## Team
-
-**Group 9 — IUT CSE, Summer 2023-2024**
-- Noor-E-Fatiha
-- Noshin Sharmili
-- Afridah Zarin Khan
-
-Supervised by Aashnan Rahman, Junior Lecturer, CSE.
 
 ## Getting Started
 
